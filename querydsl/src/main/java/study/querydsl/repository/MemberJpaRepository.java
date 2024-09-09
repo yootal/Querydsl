@@ -38,11 +38,11 @@ public class MemberJpaRepository {
         return Optional.ofNullable(findMember);
     }
 
-    public List<Member> findAll(){
+    public List<Member> findAll() {
         return em.createQuery("select m from Member m", Member.class).getResultList();
     }
 
-    public List<Member> findAll_Querydsl(){
+    public List<Member> findAll_Querydsl() {
         return queryFactory
                 .selectFrom(member)
                 .fetch();
@@ -107,15 +107,19 @@ public class MemberJpaRepository {
                         ageLoe(condition.getAgeLoe()))
                 .fetch();
     }
+
     private BooleanExpression usernameEq(String username) {
         return isEmpty(username) ? null : member.username.eq(username);
     }
+
     private BooleanExpression teamNameEq(String teamName) {
         return isEmpty(teamName) ? null : team.name.eq(teamName);
     }
+
     private BooleanExpression ageGoe(Integer ageGoe) {
         return ageGoe == null ? null : member.age.goe(ageGoe);
     }
+
     private BooleanExpression ageLoe(Integer ageLoe) {
         return ageLoe == null ? null : member.age.loe(ageLoe);
     }

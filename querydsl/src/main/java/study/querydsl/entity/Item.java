@@ -2,6 +2,7 @@ package study.querydsl.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -18,8 +19,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Item implements Persistable<String> {
 
-    @Id
-//    @GeneratedValue
+    @Id @GeneratedValue
     private String id;
 
     @CreatedDate
